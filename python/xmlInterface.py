@@ -1494,7 +1494,8 @@ class XMLInterface86(XMLInterface85):
 
         self._to_py_funcs.update({"richpp": self._to_richpp})
 
-        self.warnings_wf = True
+        # TODO: Disable this as smtcoq outputs to stderr.
+        self.warnings_wf = False
 
     def _to_richpp(self, xml: ET.Element) -> List[Tuple[str, Optional[str]]]:
         """Expect: <richpp>richpp</richpp>"""
@@ -1621,7 +1622,7 @@ class XMLInterface810(XMLInterface89):
         super().__init__(version, str_version, coq_path, coq_prog)
 
         # Warnings are once again parseable by `partition_warnings`.
-        self.warnings_wf = True
+        self.warnings_wf = False
 
     @staticmethod
     def topfile(filename: str, args: Iterable[str]) -> Tuple[str, ...]:
